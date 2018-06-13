@@ -19,13 +19,16 @@
 <form action="insertConfirm" method="post">
   <fieldset class="label-110">
     <div>
-      <label>名前</label><input type="text" name="name" value="${fn:escapeXml(registerUser.name)}" readonly>
+      <label>名前</label>
+      <input type="text" name="name" value="${fn:escapeXml(registerUser.name)}" readonly>
     </div>
     <div>
-      <label>TEL</label><input type="text" name="tel" value="${fn:escapeXml(registerUser.telephone)}" readonly>
+      <label>TEL</label>
+      <input type="text" name="tel" value="${fn:escapeXml(registerUser.telephone)}" readonly>
     </div>
     <div>
-      <label>PASS（再入力）</label><input type="password" name="rePass">
+      <label>PASS（再入力）</label>
+      <input type="password" name="rePass">
     </div>
   </fieldset>
   <div>
