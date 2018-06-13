@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib  prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html>
@@ -14,17 +14,19 @@
   <p class="error">${fn:escapeXml(errmsg)}</p>
 </c:if>
 
-<form action="login" method="post">
+<form: form action="post" modelAttribute="login"/>
   <fieldset>
     <div>
-      <label>ID</label><input type="text" name="id" value="${fn:escapeXml(param.id)}">
+      <label>ID</label>
+      <form:input path="id" />
     </div>
     <div>
-      <label>PASS</label><input type="password" name="pass" value="${fn:escapeXml(param.pass)}">
+      <label>PASS</label>
+      <form:password path="password" />
     </div>
   </fieldset>
-  <input type="submit" value="ログイン">
-</form>
+  <form:button name="login">ログイン"</form:button>
+</form:form action>
 <div>
   <a href="index.jsp">TOP画面に戻る</a>
 </div>
