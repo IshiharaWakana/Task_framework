@@ -1,4 +1,4 @@
-package jp.co.example;
+package jp.co.axiz.web;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
