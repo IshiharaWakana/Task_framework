@@ -11,6 +11,9 @@ import jp.co.axiz.web.util.DbUtil;
 
 public class AdminDao {
 
+	public AdminDao() {
+	}
+
 	public Admin findByIdAndPassword(String id, String password) {
 		try (Connection con = DbUtil.getConnection();
 				PreparedStatement stmt = con.prepareStatement(
