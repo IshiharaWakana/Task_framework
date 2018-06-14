@@ -27,6 +27,7 @@ public class PgAdminDao implements AdminDao{
 				("SELECT admin_id, admin_name, password FROM admin"
 						+ "WHERE admin_id = ? AND password = ?",
 						new BeanPropertyRowMapper<Admin>(Admin.class));}
+
 			stmt.setString(1, id);
 			stmt.setString(2, password);
 			ResultSet rs = stmt.executeQuery();

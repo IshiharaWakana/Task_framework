@@ -11,26 +11,25 @@
 <link href="css/commons.css" rel="stylesheet">
 </head>
 <body>
+	<c:if test="${not empty errmsg}">
+	  <p class="error">${fn:escapeXml(errmsg)}</p>
+	</c:if>
 
-<c:if test="${not empty errmsg}">
-  <p class="error">${fn:escapeXml(errmsg)}</p>
-</c:if>
+	<form:form action="post" modelAttribute="Login">
 
-<form:form action="post" modelAttribute="login">
+	  <fieldset>
+	    <div>
+	      <label>ID</label>
+	      <input type="text" name="id" value="${fn:escapeXml(param.id)}">
+	    </div>
+	    <div>
+	      <label>PASS</label>
+	      <input type="password" name="pass" value="${fn:escapeXml(param.pass)}">
+	    </div>
+	  </fieldset>
+	  <form:button name="login">ログイン"</form:button>
 
-  <fieldset>
-    <div>
-      <label>ID</label>
-      <input type="text" name="id" value="${fn:escapeXml(param.id)}">
-    </div>
-    <div>
-      <label>PASS</label>
-      <input type="password" name="pass" value="${fn:escapeXml(param.pass)}">
-    </div>
-  </fieldset>
-  <form:button name="login">ログイン"</form:button>
-
-</form:form>
+	</form:form>
 
 <div>
   <a href="index.jsp">TOP画面に戻る</a>

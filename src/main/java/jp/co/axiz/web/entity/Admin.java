@@ -8,6 +8,11 @@ public class Admin implements Serializable {
 	private String name;
 	private String password;
 
+	@Override
+	public String toString() {
+		return "Admin [id=" + id + ", name=" + name + ",pass='' + password + "]";
+	}
+
 	public String getId() {
 		return id;
 	}

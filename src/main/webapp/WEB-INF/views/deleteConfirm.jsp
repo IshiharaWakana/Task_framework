@@ -13,7 +13,7 @@
 <body>
 <p>このデータでよろしいですか？</p>
 
-<form:form action="post" modelAttribute="deleteConfirm">
+<form:form action="deleteConfirm" method="post">
   <fieldset>
     <div>
       <label>ID</label>

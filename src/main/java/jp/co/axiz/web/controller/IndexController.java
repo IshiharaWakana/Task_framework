@@ -9,6 +9,6 @@ public class IndexController {
 
 	@RequestMapping("/index")
 	public String index(Model model){
-	return "index_mvc";
+	return "index";
 	}
 }
