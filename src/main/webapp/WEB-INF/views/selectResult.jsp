@@ -30,7 +30,7 @@
   </tbody>
 </table>
 <div>
-  <a href="menu.jsp">メニューに戻る</a>
+  <a href="menu">メニューに戻る</a>
 </div>
 </body>
 </html>

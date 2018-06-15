@@ -34,7 +34,7 @@
   <fieldset>
     <div>
       <label>ID</label>
-      <input type="text" name="id" value="${fn:escapeXml(beforeUser.id)}" readonly>
+      <form:input path="id" value="${fn:escapeXml(beforeUser.id)}" readonly />
     </div>
   </fieldset>
 
@@ -60,25 +60,26 @@
     <legend>変更後</legend>
     <div>
       <label>名前</label>
-      <input type="text" name="newName" value="${fn:escapeXml(afterUser.name)}" readonly>
+      <form:input path="newName" value="${fn:escapeXml(afterUser.name)}" readonly />
     </div>
     <div>
       <label>TEL</label>
-      <input type="text" name="newTel" value="${fn:escapeXml(afterUser.telephone)}" readonly>
+      <form:input path="newTel" value="${fn:escapeXml(afterUser.telephone)}" readonly />
     </div>
     <div>
       <label>PASS(再入力)</label>
-      <input type="password" name="rePass" value="${fn:escapeXml(rePass)}">
+      <form:password path="rePass" value="${fn:escapeXml(rePass)}" />
     </div>
   </fieldset>
 
   <div class="col-clear">
-    <input type="submit" name="button" value="更新">
-    <input type="submit" name="button" value="戻る" onclick="location.href='updateInput.jsp'; return false;">
+    <form:input path="button" value="更新" />
+    <form:input path="button" value="戻る" onclick="location.href='updateInput.jsp'; return false;" />
   </div>
 </form:form>
+
 <div>
-  <a href="menu.jsp">メニューに戻る</a>
+  <a href="menu">メニューに戻る</a>
 </div>
 </body>
 </html>

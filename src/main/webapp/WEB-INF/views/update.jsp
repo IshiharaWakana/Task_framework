@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,16 +18,17 @@
   <p class="error">${fn:escapeXml(errmsg)}</p>
 </c:if>
 
-<form action="update" method="post">
+<form:form action="update" modelAttribute="upDate">
   <fieldset>
     <div>
-      <label class="required">ID</label><input type="text" name="id" value="${fn:escapeXml(param.id)}">
+      <label class="required">ID</label>
+      <form:input path="id" />
     </div>
   </fieldset>
   <input type="submit" value="確認">
-</form>
+</form:form>
 <div>
-  <a href="menu.jsp">メニューに戻る</a>
+  <a href="menu">メニューに戻る</a>
 </div>
 </body>
 </html>

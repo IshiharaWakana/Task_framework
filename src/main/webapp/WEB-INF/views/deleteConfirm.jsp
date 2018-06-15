@@ -17,20 +17,20 @@
   <fieldset>
     <div>
       <label>ID</label>
-      <input type="text" name="id" value="${fn:escapeXml(deleteUser.id)}" readonly>
+      <form:input path="id" value="${fn:escapeXml(deleteUser.id)}" readonly />
     </div>
     <div>
       <label>名前</label>
-      <input type="text" name="name" value="${fn:escapeXml(deleteUser.name)}" readonly>
+      <form:input path="name" value="${fn:escapeXml(deleteUser.name)}" readonly />
     </div>
     <div>
       <label>TEL</label>
-      <input type="text" name="tel" value="${fn:escapeXml(deleteUser.telephone)}" readonly>
+      <form:input path="tel" value="${fn:escapeXml(deleteUser.telephone)}" readonly />
     </div>
   </fieldset>
   <div>
-    <input type="submit" name="button" value="削除">
-    <input type="submit" name="button" value="戻る" onclick="location.href='delete.jsp'; return false;">
+    <form:input path="button" value="削除" />
+    <form:input path="button" value="戻る" onclick="location.href='delete'; return false;" />
   </div>
 </form:form>
 <div>

@@ -9,13 +9,13 @@
 <link href="css/commons.css" rel="stylesheet">
 </head>
 <body>
-<p>実行者：${fn:escapeXml(user.name)}</p>
+<p>実行者：${fn:escapeXml(user.admin_name)}</p>
 <p>正常に削除されました</p>
-<form action="select.jsp">
+<form action="select">
   <input type="submit" value="検索">
 </form>
 <div>
-  <a href="menu.jsp">メニューに戻る</a>
+  <a href="menu">メニューに戻る</a>
 </div>
 </body>
 </html>

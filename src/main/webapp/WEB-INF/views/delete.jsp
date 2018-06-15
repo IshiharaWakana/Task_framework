@@ -21,13 +21,14 @@
 <form:form action="delete" method="post">
   <fieldset>
     <div>
-      <label class="required">ID</label><input type="text" name="id" value="${fn:escapeXml(param.id)}">
+      <label class="required">ID</label>
+      <form:input path="id" />
     </div>
   </fieldset>
-  <input type="submit" value="確認">
+  <form:input path="確認" />
 </form:form>
 <div>
-  <a href="menu.jsp">メニューに戻る</a>
+  <a href="menu">メニューに戻る</a>
 </div>
 </body>
 </html>
