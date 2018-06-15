@@ -1,50 +1,58 @@
 package jp.co.axiz.web.controller;
 
-import org.springframework.boot.autoconfigure.kafka.KafkaProperties.Admin;
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import jp.co.axiz.web.dao.AdminDao;
+import jp.co.axiz.web.entity.Admin;
+
 @Controller
 public class AuthController {
 
 //	@Autowired
 //	private LoginService loginService;
+	@Autowired
+	AdminDao adminDao;
 
-	@RequestMapping("/login")
-	public String index(Model model){
+	@Autowired
+	HttpSession session;
+
+//ログイン
+	@RequestMapping("/login")//GET
+	public String index(@ModelAttribute("logIn") Admin admin, Model model){
 		return "login";
 	}
 
-	@RequestMapping(value="/post", method=RequestMethod.POST)
-	public String post(@ModelAttribute("Login") Admin admin, Model model) {
-	model.addAttribute("param.id" + admin.getId());
-	return "menu";
+	@RequestMapping(value="/login", method=RequestMethod.POST)
+	public String get(@ModelAttribute("logIn") Admin admin, Model model) {
+	String id = admin.getId();
+	String pass = admin.getPassword();
+
+	Admin ad = adminDao.findByIdAndPassword(id, pass);
+
+		if (ad != null) {
+//		session.setAttribute("user", ad);
+			model.addAttribute("user", ad);
+			return "menu";
+
+		} else {
+			model.addAttribute("errmsg", "IDまたはPASSが間違っています");
+			return "login";
+		}
 	}
 
-//		@RequestParam("id")String id;
-//		String pass = request.getParameter("pass");
-//
-//		AdminDao adminDao = new AdminDao();
-//		Admin admin = AdminDao.findByIdAndPassword(id, pass);
-//
-//		if (admin != null) {
-//			HttpSession session = request.getSession();
-//			model.addAttribute("user", admin);
-//			response.sendRedirect(request.getContextPath() + "/menu.jsp");
-//		} else {
-//			request.setAttribute("errmsg", "IDまたはPASSが間違っています");
-//			request.getRequestDispatcher("login.jsp").forward(request, response);
-//
-//
-//
-////ログアウト
-//		@RequestMapping("/logout",method=RequestMethod.POST)
-//		protected void doPost1(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+//ログアウト
+		@RequestMapping(value="/logout",method=RequestMethod.POST)
+		public String logOut(Model model){
 //			request.getSession().invalidate();
-//			request.getRequestDispatcher("logout.jsp").forward(request, response);
-//		}
+			return "logout";
+		}
 
 }

@@ -1,18 +1,14 @@
 package jp.co.axiz.web.dao.impl;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import jp.co.axiz.web.dao.AdminDao;
 import jp.co.axiz.web.entity.Admin;
-import jp.co.axiz.web.exception.DataAccessException;
-import jp.co.axiz.web.util.DbUtil;
 
 
 @Repository
@@ -21,30 +17,39 @@ public class PgAdminDao implements AdminDao{
 	@Autowired
     private JdbcTemplate jdbcTemplate;
 
-	public Admin findByIdAndPassword() {
+	@Override
+	public Admin findByIdAndPassword(String id, String pass) {
 
-		return jdbcTemplate.query
-				("SELECT admin_id, admin_name, password FROM admin"
+		List<Admin> list = jdbcTemplate.query
+				("SELECT admin_id, admin_name, password FROM admin "
 						+ "WHERE admin_id = ? AND password = ?",
-						new BeanPropertyRowMapper<Admin>(Admin.class));}
+						new BeanPropertyRowMapper<Admin>(Admin.class), id,pass);
 
-			stmt.setString(1, id);
-			stmt.setString(2, password);
-			ResultSet rs = stmt.executeQuery();
-
-			if (rs.next()) {
-				Admin a = new Admin();
-				a.setId(rs.getString("admin_id"));
-				a.setName(rs.getString("admin_name"));
-				a.setPassword(rs.getString("password"));
-				return a;
-			}
-		} catch (SQLException e) {
-			throw new DataAccessException(e);
+		if(list.size()==0) {
+			return null;
 		}
 
-		return null;
+		return (Admin) list.get(0);
 	}
+
+
+//			stmt.setString(1, id);
+//			stmt.setString(2, password);
+//			ResultSet rs = stmt.executeQuery();
+//
+//			if (rs.next()) {
+//				Admin a = new Admin();
+//				a.setId(rs.getString("admin_id"));
+//				a.setName(rs.getString("admin_name"));
+//				a.setPassword(rs.getString("password"));
+//				return a;
+//			}
+//		} catch (SQLException e) {
+//			throw new DataAccessException(e);
+//		}
+//
+//		return null;
+//	}
 
 }
 

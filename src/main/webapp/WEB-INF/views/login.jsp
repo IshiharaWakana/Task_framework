@@ -15,24 +15,24 @@
 	  <p class="error">${fn:escapeXml(errmsg)}</p>
 	</c:if>
 
-	<form:form action="post" modelAttribute="Login">
+	<form:form action="login" modelAttribute="logIn">
 
 	  <fieldset>
 	    <div>
 	      <label>ID</label>
-	      <input type="text" name="id" value="${fn:escapeXml(param.id)}">
+	      <form:input path="id"  />
 	    </div>
 	    <div>
 	      <label>PASS</label>
-	      <input type="password" name="pass" value="${fn:escapeXml(param.pass)}">
+	      <form:password path="password"/>
 	    </div>
 	  </fieldset>
-	  <form:button name="login">ログイン"</form:button>
+	  <form:button>ログイン</form:button>
 
 	</form:form>
 
 <div>
-  <a href="index.jsp">TOP画面に戻る</a>
+  <a href="index">TOP画面に戻る</a>
 </div>
 </body>
 </html>
