@@ -1,7 +1,5 @@
 package jp.co.axiz.web.controller;
 
-import java.util.Locale;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
@@ -12,7 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import jp.co.axiz.web.entity.SessionInfo;
+import jp.co.axiz.web.entity.Admin;
 import jp.co.axiz.web.entity.UserInfo;
 import jp.co.axiz.web.form.DeleteForm;
 import jp.co.axiz.web.service.impl.UserInfoService;
@@ -21,13 +19,13 @@ import jp.co.axiz.web.service.impl.UserInfoService;
 public class DeleteController {
 
 	@Autowired
-	private SessionInfo sessionInfo;
-
-	@Autowired
     MessageSource messageSource;
 
 	@Autowired
 	private UserInfoService userInfoService;
+
+	@Autowired
+	private Admin admin;
 
 	@RequestMapping("/delete")
 	public String delete(@ModelAttribute("deleteForm") DeleteForm form, Model model) {
@@ -39,16 +37,14 @@ public class DeleteController {
 			Model model) {
 
 		if (bindingResult.hasErrors()) {
-			String errorMsg = messageSource.getMessage("required.error", null, Locale.getDefault());
-			model.addAttribute("errmsg", errorMsg);
+			model.addAttribute("errmsg", "必須項目を入力してください");
 			return "delete";
 		}
 
 		UserInfo user = userInfoService.findById(form.getUserId());
 
 		if(user == null) {
-			String errorMsg = messageSource.getMessage("id.not.found.error", null, Locale.getDefault());
-			model.addAttribute("errmsg", errorMsg);
+			model.addAttribute("errmsg", "入力されたデータは存在しません");
 			return "delete";
 		}
 
@@ -66,7 +62,7 @@ public class DeleteController {
 
 		userInfoService.delete(id);
 
-		model.addAttribute("user", sessionInfo.getLoginUser());
+		model.addAttribute("user", admin.getAdmin_name());
 
 		return "deleteResult";
 	}

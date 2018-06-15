@@ -1,7 +1,5 @@
 package jp.co.axiz.web.controller;
 
-import java.util.Locale;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
@@ -12,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import jp.co.axiz.web.entity.Admin;
 import jp.co.axiz.web.entity.SessionInfo;
 import jp.co.axiz.web.entity.UserInfo;
 import jp.co.axiz.web.form.UpdateForm;
@@ -22,6 +21,9 @@ public class UpdateController {
 
 	@Autowired
 	private SessionInfo sessionInfo;
+
+	@Autowired
+	private Admin admin;
 
 	@Autowired
     MessageSource messageSource;
@@ -39,16 +41,14 @@ public class UpdateController {
 			Model model) {
 
 		if (bindingResult.hasFieldErrors("userId")) {
-			String errorMsg = messageSource.getMessage("required.error", null, Locale.getDefault());
-			model.addAttribute("errmsg", errorMsg);
+			model.addAttribute("errmsg", "必須項目を入力してください");
 			return "update";
 		}
 
 		UserInfo user = userInfoService.findById(form.getUserId());
 
 		if(user == null) {
-			String errorMsg = messageSource.getMessage("id.not.found.error", null, Locale.getDefault());
-			model.addAttribute("errmsg", errorMsg);
+			model.addAttribute("errmsg", "入力されたデータはありませんでした");
 			return "update";
 		}
 
@@ -66,8 +66,7 @@ public class UpdateController {
 			Model model) {
 
 		if (form.hasRequiredError()) {
-			String errorMsg = messageSource.getMessage("required.error", null, Locale.getDefault());
-			model.addAttribute("errmsg", errorMsg);
+			model.addAttribute("errmsg", "１項目以上変更してください");
 			return "updateInput";
 		}
 
@@ -80,8 +79,7 @@ public class UpdateController {
 		afterUser.setPassword(form.getNewPassword());
 
 		if(afterUser.equals(beforeUser)) {
-			String errorMsg = messageSource.getMessage("required.change", null, Locale.getDefault());
-			model.addAttribute("errmsg", errorMsg);
+			model.addAttribute("errmsg", "入力されたデータは存在しません");
 			return "updateInput";
 		}
 
@@ -119,8 +117,7 @@ public class UpdateController {
 		UserInfo afterUser = sessionInfo.getAfterUser();
 
 		if(!afterUser.getPassword().equals(form.getConfirmNewPassword())) {
-			String errorMsg = messageSource.getMessage("password.not.match.error", null, Locale.getDefault());
-			model.addAttribute("errmsg", errorMsg);
+			model.addAttribute("errmsg", "前画面で入力したパスワードと一致しません");
 
 			form.setConfirmNewPassword("");
 
@@ -137,7 +134,7 @@ public class UpdateController {
 		sessionInfo.setAfterUser(null);
 		sessionInfo.setPrevUser(null);
 
-		model.addAttribute("user", sessionInfo.getLoginUser());
+		model.addAttribute("user", admin.getAdmin_name());
 
 		return "updateResult";
 	}

@@ -23,6 +23,8 @@ public class Admin implements Serializable {
 		this.admin_id = admin_id;
 	}
 
+
+
 	public String getAdmin_name() {
 		return admin_name;
 	}

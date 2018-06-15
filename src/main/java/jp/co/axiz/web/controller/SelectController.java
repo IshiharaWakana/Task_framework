@@ -1,7 +1,6 @@
 package jp.co.axiz.web.controller;
 
 import java.util.List;
-import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
@@ -34,10 +33,8 @@ public class SelectController {
 	public String list(@Validated @ModelAttribute("selectForm") SelectForm form, BindingResult bindingResult,
 			Model model) {
 
-		String errorMsg = messageSource.getMessage("select.error", null, Locale.getDefault());
-
 		if (bindingResult.hasErrors()) {
-			model.addAttribute("errmsg", errorMsg);
+			model.addAttribute("errmsg", "入力されたデータはありませんでした");
 			return "select";
 		}
 
@@ -49,7 +46,7 @@ public class SelectController {
 		List<UserInfo> resultList = userInfoService.find(condition);
 
 		if(resultList.isEmpty()) {
-			model.addAttribute("errmsg", errorMsg);
+			model.addAttribute("errmsg", "入力されたデータはありませんでした");
 			return "select";
 		}else {
 			model.addAttribute("userlist", resultList);
