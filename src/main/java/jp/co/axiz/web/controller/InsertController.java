@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import jp.co.axiz.web.entity.Admin;
 import jp.co.axiz.web.entity.SessionInfo;
 import jp.co.axiz.web.entity.UserInfo;
 import jp.co.axiz.web.form.InsertForm;
@@ -22,8 +21,6 @@ public class InsertController {
 	@Autowired
 	private SessionInfo sessionInfo;
 
-	@Autowired
-	private Admin admin;
 
 	@Autowired
     MessageSource messageSource;
@@ -87,7 +84,6 @@ public class InsertController {
 
 		form.setUserId(id);
 
-		model.addAttribute("user", admin.getAdmin_name());
 
 		return "insertResult";
 	}

@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import jp.co.axiz.web.entity.Admin;
 import jp.co.axiz.web.entity.UserInfo;
 import jp.co.axiz.web.form.DeleteForm;
 import jp.co.axiz.web.service.impl.UserInfoService;
@@ -23,9 +22,6 @@ public class DeleteController {
 
 	@Autowired
 	private UserInfoService userInfoService;
-
-	@Autowired
-	private Admin admin;
 
 	@RequestMapping("/delete")
 	public String delete(@ModelAttribute("deleteForm") DeleteForm form, Model model) {
@@ -61,8 +57,6 @@ public class DeleteController {
 		int id = form.getUserId();
 
 		userInfoService.delete(id);
-
-		model.addAttribute("user", admin.getAdmin_name());
 
 		return "deleteResult";
 	}

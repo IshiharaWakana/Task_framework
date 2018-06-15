@@ -41,8 +41,7 @@ public class AuthController {
 	Admin ad = adminDao.findByIdAndPassword(id, pass);
 
 		if (ad != null) {
-//		session.setAttribute("user", ad);
-			model.addAttribute("user", ad);
+		session.setAttribute("user", ad);
 			return "menu";
 
 		} else {
