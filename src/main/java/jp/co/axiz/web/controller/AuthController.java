@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import jp.co.axiz.web.dao.AdminDao;
 import jp.co.axiz.web.entity.Admin;
+import jp.co.axiz.web.entity.SessionInfo;
 
 @Controller
 public class AuthController {
@@ -22,6 +23,9 @@ public class AuthController {
 
 	@Autowired
 	HttpSession session;
+
+	@Autowired
+	private SessionInfo sessionInfo;
 
 //ログイン
 	@RequestMapping("/login")//GET
@@ -52,6 +56,7 @@ public class AuthController {
 		@RequestMapping(value="/logout",method=RequestMethod.POST)
 		public String logOut(Model model){
 //			request.getSession().invalidate();
+			sessionInfo.invalidate();
 			return "logout";
 		}
 

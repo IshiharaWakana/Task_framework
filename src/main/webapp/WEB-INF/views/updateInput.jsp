@@ -2,13 +2,14 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>更新内容入力画面</title>
-<link href="css/commons.css" rel="stylesheet">
+<link href="/css/commons.css" rel="stylesheet">
 </head>
 <body>
 <p>１箇所以上の項目を変更してください<br>
@@ -18,28 +19,24 @@
   <p class="error">${fn:escapeXml(errmsg)}</p>
 </c:if>
 
-<form:form action="updateInput" method="post">
+<form:form action="updateConfirm" method="post" modelAttribute="updateForm">
   <fieldset>
     <div>
-      <label>ID</label>
-      <form:input path="id" value="${fn:escapeXml(afterUser.id)}" readonly />
+      <label>ID</label><form:input path="userId" readonly="true" />
     </div>
     <div>
-      <label>名前</label>
-      <input type="text" name="newName" value="${fn:escapeXml(afterUser.name)}">
+      <label>名前</label><form:input path="newName" />
     </div>
     <div>
-      <label>TEL</label>
-      <input type="text" name="newTel" value="${fn:escapeXml(afterUser.telephone)}">
+      <label>TEL</label><form:input path="newTel" />
     </div>
     <div>
-      <label>PASS</label>
-      <input type="password" name="newPass" value="${fn:escapeXml(afterUser.password)}">
+      <label>PASS</label><form:password path="newPassword" showPassword="true"/>
     </div>
   </fieldset>
   <div>
     <input type="submit" name="button" value="確認">
-    <input type="submit" name="button" value="戻る" onclick="location.href='update.jsp'; return false;">
+    <input type="submit" name="button" value="戻る" onclick="location.href='update'; return false;">
   </div>
 </form:form>
 <div>

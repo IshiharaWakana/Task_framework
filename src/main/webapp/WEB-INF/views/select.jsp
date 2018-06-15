@@ -2,13 +2,14 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>検索画面</title>
-<link href="css/commons.css" rel="stylesheet">
+<link href="/css/commons.css" rel="stylesheet">
 </head>
 <body>
 <p>検索したいデータ情報を入力してください<br>
@@ -18,26 +19,23 @@
   <p class="error">${fn:escapeXml(errmsg)}</p>
 </c:if>
 
-<form:form action="select">
+<form:form action="list" modelAttribute="selectForm">
   <fieldset>
     <div>
-     	 <label>ID</label>
-     	 <form:input path="id" value="${fn:escapeXml(param.id)}" />
+      <label>ID</label><form:input path="userId" />
     </div>
     <div>
-      	<label>名前</label>
-      	<form:input path="name" value="${fn:escapeXml(param.name)}" />
+      <label>名前</label><form:input path="name" />
     </div>
     <div>
-	     <label>TEL</label>
-	      <form:input path="tel" value="${fn:escapeXml(param.tel)}" />
+      <label>TEL</label><form:input path="tel" />
     </div>
   </fieldset>
-	  <input type="submit" value="検索">
+<%--   <form:button>検索</form:button> --%>
+  <input type="submit" value="検索">
 </form:form>
-
 <div>
-	  <a href="menu">メニューに戻る</a>
+  <a href="menu">メニューに戻る</a>
 </div>
 </body>
 </html>

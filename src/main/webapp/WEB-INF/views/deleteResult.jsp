@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>削除結果確認画面</title>
-<link href="css/commons.css" rel="stylesheet">
+<link href="/css/commons.css" rel="stylesheet">
 </head>
 <body>
 <p>実行者：${fn:escapeXml(user.admin_name)}</p>

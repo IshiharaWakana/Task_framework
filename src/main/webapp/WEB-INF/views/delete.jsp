@@ -2,13 +2,14 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>削除画面</title>
-<link href="css/commons.css" rel="stylesheet">
+<link href="/css/commons.css" rel="stylesheet">
 </head>
 <body>
 <p>削除を行うデータのIDを入力してください<br>
@@ -18,14 +19,13 @@
   <p class="error">${fn:escapeXml(errmsg)}</p>
 </c:if>
 
-<form:form action="delete" method="post">
+<form:form action="deleteConfirm" method="post" modelAttribute="deleteForm">
   <fieldset>
     <div>
-      <label class="required">ID</label>
-      <form:input path="id" />
+      <label class="required">ID</label><form:input path="userId" />
     </div>
   </fieldset>
-  <form:input path="確認" />
+  <input type="submit" value="確認">
 </form:form>
 <div>
   <a href="menu">メニューに戻る</a>
