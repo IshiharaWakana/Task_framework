@@ -13,25 +13,34 @@
 <link href="/css/commons.css" rel="stylesheet">
 </head>
 <body>
-<table>
-  <caption>検索結果</caption>
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>名前</th>
-      <th>TEL</th>
-    </tr>
-  </thead>
-  <tbody>
+
+検索結果
+
+<ul class="thumbnail">
+
     <c:forEach items="${userlist}" var="user">
-      <tr>
-        <td>${fn:escapeXml(user.userId)}</td>
-        <td>${fn:escapeXml(user.userName)}</td>
-        <td>${fn:escapeXml(user.telephone)}</td>
-      </tr>
-    </c:forEach>
-  </tbody>
-</table>
+<li>
+<dl class="clearFix">
+<dt class="photo"><a href="#">
+<img src="#" alt="Photo" width="140" height="100">
+</a></dt>
+
+<dt class="title">
+<strong>
+	<a href="#">${fn:escapeXml(user.userId)}</a>
+</strong>
+</dt>
+
+<dd>
+${fn:escapeXml(user.userName)}
+${fn:escapeXml(user.telephone)}
+</dd>
+
+</dl>
+</li>
+	</c:forEach>
+
+</ul>
 <div>
   <a href="menu">メニューに戻る</a>
 </div>

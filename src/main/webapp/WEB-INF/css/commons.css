@@ -1,44 +1,61 @@
 @charset "UTF-8";
 
-fieldset {
-  border: none;
+/* --- リストエリア --- */
+ul.thumbnail {
+width: 500px; /* リストエリアの幅 */
+margin: 0;
+padding: 0;
+border-top: 1px #808080 dotted; /* リストエリアの上境界線 */
+list-style-type: none;
 }
 
-fieldset label {
-  display: inline-block;
-  width: 43px;
+/* --- リスト項目 --- */
+ul.thumbnail li {
+padding: 20px 15px; /* リスト項目のパディング（上下、左右） */
+border-bottom: 1px #808080 dotted; /* リスト項目の下境界線 */
 }
 
-fieldset.label-60 label {
-  width: 60px;
+/* --- 項目内容 --- */
+ul.thumbnail dl {
+width: 100%;
+margin: 0;
+font-size: 80%;
 }
 
-fieldset.label-110 label {
-  width: 110px;
+/* --- 写真エリア --- */
+ul.thumbnail dt.photo {
+width: 160px; /* 写真エリアの幅 */
+float: left;
+}
+ul.thumbnail dt.photo img {
+border: 1px #808080 solid; /* 写真の境界線 */
 }
 
-fieldset div {
-  margin: 5px;
+/* --- キャプションエリア --- */
+ul.thumbnail dt.title,
+ul.thumbnail dd {
+margin: 0 0 0 160px; /* キャプションエリアのマージン（上右下左） */
 }
 
-form ~ div, table ~ div {
-  margin-top: 10px;
+/* --- タイトルエリア --- */
+ul.thumbnail dt.title {
+margin-bottom: 5px; /* タイトルエリアの下マージン */
+line-height: 120%;
 }
 
-table, table th, table td {
-  border: solid 1px;
+/* --- コメントエリア --- */
+ul.thumbnail dd {
+line-height: 150%;
 }
 
-input:read-only {
-  background: #CCCCCC;
-  color: black;
+/* --- clearfix --- */
+.clearFix:after {
+content: ".";
+display: block;
+height: 0;
+clear: both;
+visibility: hidden;
 }
-
-.center {
-  text-align: center;
-}
-
-.required::before {
-  content: "※";
-  color: red;
+.clearFix {
+min-height: 1px;
 }
