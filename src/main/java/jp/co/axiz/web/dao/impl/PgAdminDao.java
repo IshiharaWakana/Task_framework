@@ -18,12 +18,12 @@ public class PgAdminDao implements AdminDao{
     private JdbcTemplate jdbcTemplate;
 
 	@Override
-	public Admin findByIdAndPassword(String id, String pass) {
+	public Admin findByPassword(String pass) {
 
 		List<Admin> list = jdbcTemplate.query
 				("SELECT admin_id, admin_name, password FROM admin "
-						+ "WHERE admin_id = ? AND password = ?",
-						new BeanPropertyRowMapper<Admin>(Admin.class), id,pass);
+						+ "WHERE password = ?",
+						new BeanPropertyRowMapper<Admin>(Admin.class), pass);
 
 		if(list.size()==0) {
 			return null;

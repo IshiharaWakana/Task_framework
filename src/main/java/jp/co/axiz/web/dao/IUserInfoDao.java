@@ -12,4 +12,5 @@ public interface IUserInfoDao {
 	public UserInfo findById(Integer id);
 	public void delete(Integer id);
 	public void update(UserInfo user);
+
 }

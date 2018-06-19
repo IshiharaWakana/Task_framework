@@ -19,10 +19,6 @@
 
 	  <fieldset>
 	    <div>
-	      <label>ID</label>
-	      <form:input path="id"  />
-	    </div>
-	    <div>
 	      <label>PASS</label>
 	      <form:password path="password"/>
 	    </div>

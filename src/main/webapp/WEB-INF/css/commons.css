@@ -1,4 +1,47 @@
 @charset "UTF-8";
+fieldset {
+  border: none;
+}
+
+fieldset label {
+  display: inline-block;
+  width: 43px;
+}
+
+fieldset.label-60 label {
+  width: 60px;
+}
+
+fieldset.label-110 label {
+  width: 110px;
+}
+
+fieldset div {
+  margin: 5px;
+}
+
+form ~ div, table ~ div {
+  margin-top: 10px;
+}
+
+table, table th, table td {
+  border: solid 1px;
+}
+
+input:read-only {
+  background: #CCCCCC;
+  color: black;
+}
+
+.center {
+  text-align: center;
+}
+
+.required::before {
+  content: "※";
+  color: red;
+}
+
 
 /* --- リストエリア --- */
 ul.thumbnail {
@@ -25,7 +68,8 @@ font-size: 80%;
 /* --- 写真エリア --- */
 ul.thumbnail dt.photo {
 width: 160px; /* 写真エリアの幅 */
-float: left;
+float: right;
+text-align: right;
 }
 ul.thumbnail dt.photo img {
 border: 1px #808080 solid; /* 写真の境界線 */
@@ -34,7 +78,7 @@ border: 1px #808080 solid; /* 写真の境界線 */
 /* --- キャプションエリア --- */
 ul.thumbnail dt.title,
 ul.thumbnail dd {
-margin: 0 0 0 160px; /* キャプションエリアのマージン（上右下左） */
+margin: 0 160px 0 0; /* キャプションエリアのマージン（上右下左） */
 }
 
 /* --- タイトルエリア --- */

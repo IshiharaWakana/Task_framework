@@ -10,8 +10,7 @@
 </head>
 <body>
 <div class="center">
-  <p>ログアウトしました。<br>
-  ※３秒後にTOP画面に遷移します。</p>
+  <p>※３秒後にTOP画面に遷移します。</p>
 </div>
 </body>
 </html>

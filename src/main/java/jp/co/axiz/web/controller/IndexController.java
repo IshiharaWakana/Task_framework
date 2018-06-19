@@ -9,6 +9,7 @@ public class IndexController {
 
 	@RequestMapping("/index")
 	public String index(Model model){
+		model.addAttribute("gazou", "image/aa.jpg");
 	return "index";
 	}
 

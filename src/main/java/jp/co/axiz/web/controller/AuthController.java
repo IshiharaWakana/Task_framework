@@ -35,10 +35,9 @@ public class AuthController {
 
 	@RequestMapping(value="/login", method=RequestMethod.POST)
 	public String get(@ModelAttribute("logIn") Admin admin, Model model) {
-	String id = admin.getId();
 	String pass = admin.getPassword();
 
-	Admin ad = adminDao.findByIdAndPassword(id, pass);
+	Admin ad = adminDao.findByPassword(pass);
 
 		if (ad != null) {
 		session.setAttribute("user", ad);

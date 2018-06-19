@@ -12,14 +12,14 @@
 <link href="/css/commons.css" rel="stylesheet">
 </head>
 <body>
-<p>実行者：${fn:escapeXml(user.admin_name)}</p>
 <p>正常に登録されました</p>
+PASS：${fn:escapeXml(user.admin_name)}
 <form:form action="select" modelAttribute="insertForm">
   <form:hidden path="userId" />
   <input type="submit" value="検索">
 </form:form>
 <div>
-  <a href="menu">メニューに戻る</a>
+  <a href="logout">TOP画面に戻る</a>
 </div>
 </body>
 </html>

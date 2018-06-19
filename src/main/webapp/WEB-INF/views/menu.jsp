@@ -17,7 +17,6 @@
 <p>${fn:escapeXml(user.admin_name)}さん、こんにちは</p>
 
 <p><a href="select">検索</a></p>
-<p><a href="insert">登録</a></p>
 <p><a href="update">更新</a></p>
 <p><a href="delete">削除</a></p>
 <form action="logout" method="post">

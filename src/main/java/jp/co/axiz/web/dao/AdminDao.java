@@ -4,6 +4,6 @@ import jp.co.axiz.web.entity.Admin;
 
 public interface AdminDao {
 
-	public Admin findByIdAndPassword(String id,String pass);
+	public Admin findByPassword(String pass);
 
 }
